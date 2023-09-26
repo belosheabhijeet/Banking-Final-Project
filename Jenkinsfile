@@ -9,6 +9,11 @@ pipeline {
         git 'https://github.com/belosheabhijeet/Banking-Final-Project.git'
       }
     }
+    stage ('Build Package') {
+      steps {
+        sh 'mvn package' 
   }
 }
+  }
+  }
     
