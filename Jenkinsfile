@@ -32,5 +32,10 @@ pipeline {
         sh 'docker push belosheabhijeet/banking-finance-app:1.0'
      }
        }
+    stage('Deploy the image on the production') {
+     steps {
+       ansiblePlaybook credentialsId: 'ubuntu-user', disableHostKeyChecking: true, installation: 'ansible', playbook: 'deploy.yml'
+           }
+}
 }
 }
