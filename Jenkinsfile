@@ -24,5 +24,13 @@ pipeline {
        sh 'docker build -t belosheabhijeet/banking-finance-app:1.0 .'
         }       
          }
+    stage('Push the image to dockedr hub') {
+     steps {
+       withCredentials([usernamePassword(credentialsId: 'docker1-hub', passwordVariable: 'docker_password', usernameVariable: 'docker_user')]) {
+     sh 'docker login -u ${docker_user} -p ${docker_password}'
+        }
+        sh 'docker push belosheabhijeet/banking-finance-app:1.0'
+     }
+       }
 }
 }
