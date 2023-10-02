@@ -11,7 +11,7 @@ pipeline {
   stages {
     stage ('Git Checkout') {
       steps {
-        git 'https://github.com/belosheabhijeet/Banking-Final-Project.git'
+        git 'https://github.com/belosheabhijeet/Banking-Finance-Project.git'
       }
     }
 /*
