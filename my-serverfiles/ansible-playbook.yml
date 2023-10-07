@@ -13,4 +13,4 @@
     command : sudo systemctl start docker
 
   - name : Run the Bank application
-    command: sudo docker run -dt -p 8084:8081 belosheabhijeet/banking-final-app:2.0
+    command: sudo docker run -dt -p 8084:8081 belosheabhijeet/banking-finance-app:1.0
