@@ -47,7 +47,7 @@ pipeline {
  stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
             steps {
                 dir('my-serverfiles'){
-                sh 'echo "admin" | sudo -S chmod 400 abhijeetkeypair.pem'
+                sh 'chmod 400 abhijeetkeypair.pem'
                 sh 'sudo apt-get install terraform'
                 sh 'terraform init'
                 sh 'terraform validate'
