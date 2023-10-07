@@ -14,7 +14,6 @@ pipeline {
         git 'https://github.com/belosheabhijeet/Banking-Finance-Project.git'
       }
     }
-/*
     stage ('Build Package') {
       steps {
         sh 'mvn clean package' 
@@ -43,7 +42,6 @@ pipeline {
        ansiblePlaybook credentialsId: 'ubuntu-user', disableHostKeyChecking: true, installation: 'ansible', playbook: 'deploy.yml'
            }
 }
-*/
  stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
             steps {
                 dir('my-serverfiles'){
