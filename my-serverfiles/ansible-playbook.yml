@@ -22,8 +22,8 @@
     - name: Docker Login
       docker_login:
         registry_url: https://index.docker.io/v1/
-        username: your_username  # Replace with your Docker Hub username
-        password: your_password  # Replace with your Docker Hub password or authentication token
+        username: belosheabhijeet  # Replace with your Docker Hub username
+        password: Abhirash@2812  # Replace with your Docker Hub password or authentication token
       become: yes
 
     - name: Run the Bank application
