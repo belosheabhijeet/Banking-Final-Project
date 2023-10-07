@@ -1,16 +1,31 @@
-- name : Configure Docker on test-server Instances
-  hosts : all
+---
+- name: Configure Docker on test-server Instances
+  hosts: all
   become: true
-  connection : ssh
-  tasks : 
-  - name: Updating yum
-    command : sudo apt update
+  tasks:
+    - name: Updating apt cache
+      apt:
+        update_cache: yes
 
-  - name : Install Docker
-    command : sudo apt install docker.io -y
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+      become: yes
 
-  - name : Start Docker Service
-    command : sudo systemctl start docker
+    - name: Start Docker Service
+      systemd:
+        name: docker
+        state: started
+      become: yes
 
-  - name : Run the Bank application
-    command: sudo docker run -dt -p 8084:8081 belosheabhijeet/banking-finance-app:1.0
+    - name: Docker Login
+      docker_login:
+        registry_url: https://index.docker.io/v1/
+        username: belosheabhijeet  # Replace with your Docker Hub username
+        password: Abhirash@2812  # Replace with your Docker Hub password or authentication token
+      become: yes
+
+    - name: Run the Bank application
+      command: docker run -dt -p 8084:8081 belosheabhijeet/banking-finance-app:1.0
+      become: yes
