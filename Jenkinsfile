@@ -11,9 +11,10 @@ pipeline {
   stages {
     stage ('Git Checkout') {
       steps {
-        git 'https://github.com/belosheabhijeet/Banking-Finance-Project.git'
+        git 'https://github.com/belosheabhijeet/Banking-Final-Project.git'
       }
     }
+    /*
     stage ('Build Package') {
       steps {
         sh 'mvn clean package' 
@@ -21,12 +22,12 @@ pipeline {
 }
     stage ('Publish HTML Reports') {
      steps {
-       publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Banking-Finance-Project/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+       publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Banking-Final-Project/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
   }
   }
     stage('Created docker image') {
      steps {
-       sh 'docker build -t belosheabhijeet/banking-finance-app:1.0 .'
+       sh 'docker build -t belosheabhijeet/banking-final-app:1.0 .'
         }       
          }
     stage('Push the image to dockedr hub') {
@@ -34,7 +35,7 @@ pipeline {
        withCredentials([usernamePassword(credentialsId: 'docker1-hub', passwordVariable: 'docker_password', usernameVariable: 'docker_user')]) {
      sh 'docker login -u ${docker_user} -p ${docker_password}'
         }
-        sh 'docker push belosheabhijeet/banking-finance-app:1.0'
+        sh 'docker push belosheabhijeet/banking-final-app:1.0'
      }
        }
     stage('Deploy the image on the production') {
@@ -42,6 +43,7 @@ pipeline {
        ansiblePlaybook credentialsId: 'ubuntu-user', disableHostKeyChecking: true, installation: 'ansible', playbook: 'deploy.yml'
            }
 }
+*/
  stage ('Configure Test-server with Terraform, Ansible and then Deploying'){
             steps {
                 dir('my-serverfiles'){
